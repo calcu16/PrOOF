@@ -4,3 +4,4 @@ build
 /handler.py
 /.htaccess
 /node
+/favicon.*
