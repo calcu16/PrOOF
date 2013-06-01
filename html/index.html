@@ -1,6 +1,16 @@
 #inside "bootstrap.html"
 <script src="js/parser.js"></script>
+<script type="text/javascript">
+function test()
+{
+	document.getElementById('result').innerHTML = Parser.escape(document.getElementById('test').value);
+	document.getElementById('rpn').innerHTML = Parser.toRPN(Parser.parse(document.getElementById('result').innerHTML));
+	
+}
+</script>
 The On-Line Encyclopedia of Formal Proofs <br/>
 <input type="text" id="test"></input> <br/>
-<input type="button" onclick="document.getElementById('result').innerHTML=Parser.escape(document.getElementById('test').value)"></input> <br/>
-<div id="result" onload=""></div>
+<input type="button" onclick="test()" value="test"></input> <br/>
+<div id="result"></div>
+<div id="rpn"></div>
+
