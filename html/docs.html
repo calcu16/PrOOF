@@ -1,0 +1,149 @@
+#inside "bootstrap.html"
+<script src="js/parser.js"></script>
+<style>
+	.category
+	{
+		font-size: 24px;
+		text-align: center;
+	}
+</style>
+<table id="table">
+	<tr>
+		<td colspan="4" class="category">Propositional Calculus</td>
+	</tr>
+	<tr>
+		<td>Modus Ponens</td>
+		<td>A,A \then B</td>
+		<td>\entails</td>
+		<td>B</td>
+	</tr>
+	<tr>
+		<td>Simplification</td>
+		<td></td>
+		<td>\entails</td>
+		<td>A \then B \then A</td>
+	</tr>
+	<tr>
+		<td>Frege</td>
+		<td></td>
+		<td>\entails</td>
+		<td>(A \then B \then G) \then (A \then B) \then (A \then G)</td>
+	</tr>
+	<tr>
+		<td>Contraposition</td>
+		<td></td>
+		<td>\entails</td>
+		<td>(\not A \then \not B) \then A \then B</td>
+	</tr>
+	<tr>
+		<td>Equivalence Introduction</td>
+		<td></td>
+		<td>\entails</td>
+		<td>\not ((A \then B) \then \not (B \then A)) \then (A \iff B)</td>
+	</tr>
+	<tr>
+		<td>Equivalence Elimination</td>
+		<td></td>
+		<td>\entails</td>
+		<td>(A \iff B) \then \not ((A \then B) \then \not (B \then A))</td>
+	</tr>
+	<tr>
+		<td>Conjunction</td>
+		<td></td>
+		<td>\entails</td>
+		<td>A \and B \iff \not(A \then \not B)</td>
+	</tr>
+	<tr>
+		<td colspan="4" class="category">Predicate Calculus</td>
+	</tr>
+	<tr>
+		<td>Quantifier Introduction</td>
+		<td></td>
+		<td>\entails</td>
+		<td>A \then \forall a A</td>
+	</tr>
+	<tr>
+		<td>Quantifier Elimination</td>
+		<td></td>
+		<td>\entails</td>
+		<td>(\forall a A[a]) \then A[b]</td>
+	</tr>
+	<tr>
+		<td>Quantifier Distribution</td>
+		<td></td>
+		<td>\entails</td>
+		<td>(\forall a (A \then B[a])) \then A \then (\forall a B[a])</td>
+	</tr>
+	<tr>
+		<td>Existence</td>
+		<td></td>
+		<td>\entails</td>
+		<td>(\exists a A[a]) \iff \not \forall a \not A[a]</td>
+	</tr>
+	<tr>
+		<td>Constant Expressions</td>
+		<td></td>
+		<td>\entails</td>
+		<td>\forall x forall y A[x,y] \iff \alpha[x,y]</td>
+	</tr>
+	<tr>
+		<td>Constant Variable</td>
+		<td></td>
+		<td>\entails</td>
+		<td>\exists x A[x] \then A[\alpha]</td>
+	</tr>
+	<tr>
+		<td colspan="4" class="category">Set Variables</td>
+	</tr>
+	<tr>
+		<td>Equality Introduction</td>
+		<td></td>
+		<td>\entails</td>
+		<td>\forall a \forall b (\forall c c \in a \iff c \in b) \then a = b</td>
+	</tr>
+	<tr>
+		<td>Equaility Elimination</td>
+		<td></td>
+		<td>\entails</td>
+		<td>\forall a \forall b a = b \then A[a,a] \then A[a,b]</td>
+	</tr>
+	<tr>
+		<td>Existence</td>
+		<td></td>
+		<td>\entails</td>
+		<td>\exists a a = a</td>
+	</tr>
+	<tr>
+		<t>
+	</tr>
+	<tr>
+		<td colspan="4" class="category">(Modified) ZF</td>
+	</tr>
+	<tr>
+		<td>Axiom of Replacement</td>
+		<td></td>
+		<td>\entails</td>
+		<td>\forall A (\forall a \forall b \forall c A[a,b] \and A[a,c] \then b = c) \then \forall a \exists b \forall c \forall d c \in a \and A[c,d] \then d \in b</td>
+	</tr>
+	<tr>
+		<td>Axiom of Sequences</td>
+		<td></td>
+		<td>\entails</td>
+		<td>\forall A (\forall a \forall b \forall c A[a,b] \and A[a,c] \then b = c) \then \forall a \exists b a \in b \and \forall c \forall d c \in b \and A[c,d] \then d \in b</td>
+	</tr>
+	<tr>
+		<td>Axiom of Power Sets</td>
+		<td></td>
+		<td>\entails</td>
+		<td>\forall a \exists b \forall c (\forall d d \in c \then d \in x) \then c \in b</td>
+	</tr>
+	<tr>
+		<td>Axiom of Unions</td>
+		<td></td>
+		<td>\entails</td>
+		<td>\forall a \exists b \forall c (\exists d c \in d \and d \in a) \then c \in b</td>
+	</tr>
+</table>
+<script type="text/javascript">
+	Parser.escapeDOM(document.getElementById('table'));
+</script>

@@ -24,28 +24,18 @@ there exits binds a variable and makes a statement about that variable. They
 take in a variable name and return a formula. Relations take in formulas and
 return formulas.
 
-Properties take in variables and return a well formed formula. They represent
-a formula binding some variables into the formula. For notational reasons, I
-will probably limit formula to taking three arguments in the basic set.
-Although it should be trivial to add more.
-
 Variables are the basic elements of the universe. In the initial axiom they
 will represent sets, and propertes will be used for ZFC specification and
 replacement.
 
 Formulas are logical elements, in classical logic they are either true or
-false for a given universe (LEM).
+false for a given universe (LEM). They can take arguments to signal unification.
 
-I proposed the following definitions:
- * a, a -> b     |- b
- * a             |- b -> a
- * a -> (b -> c) |- (a -> b) -> (a -> c)
- * _|_           |- a
- * a -> _|_      |- !a
- * !a -> !b      |- b -> a
- * \-/x a -> b   |- \-/x a -> \-/x b
- * !\-/x a       |- \-/y !\-/x a
- * \-/x \-/y a   |- \-/x \-/y a
- * a             |- \-/x a
- * 
+For instance we can create the following axioms for propositional calculus
+         |- a -> (b -> a)
+         |- (a -> (b -> c)) -> (a -> b) -> (a -> c)
+         |- (!a -> !b) -> (b -> a)
+ a, a->b |- b
+
+ 
 

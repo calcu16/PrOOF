@@ -7,6 +7,16 @@ Parser.ESCAPE = {
 	"exists" : 0x2203,
 	"and"    : 0x2227,
 	"or"     : 0x2228,
+	"entails": 0x22A2,
+
+	"in"     : 0x2208,
+
+	"alpha"  : 0x03B1,
+	"beta"   : 0x03B2,
+	"gamma"  : 0x03B3,
+	"delta"  : 0x03B4,
+	"epsilon": 0x03B5,
+
 	"true"   : 0x22A4,
 	"false"  : 0x22A5,
 };
@@ -23,17 +33,19 @@ Parser.OOO = [
 	["or"     ,Parser.ASSOC.LEFT],
 	["and"    ,Parser.ASSOC.LEFT],
 	["not"    ,Parser.ASSOC.UNARY],
+	["in"     ,Parser.ASSOC.LEFT],
 ]
 
 Parser.alnum = function(c) {
 	return /[a-zA-Z0-9]/.test(c);
 }
 
-Parser.escape = function(s) {
+Parser.escape = function(s, space) {
+	if(typeof(space) ==='undefined') space = '';
 	var out = '';
 	for(var i = 0; i < s.length; ++i)
 	{
-		if(s[i] == ' ') ;
+		if(s[i] == ' ') out += space;
 		else if(s[i] != '\\')
 			out += s[i];
 		else
@@ -42,12 +54,21 @@ Parser.escape = function(s) {
 			var replace = '';
 			for(++i; i < s.length && Parser.alnum(s[i]); ++i)
 				replace += s[i];
+			--i;
 			//XX needs error handling
 			out += Parser.ESCAPE[replace];
 		}
 	}
 	return out;
 }
+
+Parser.escapeDOM = function(elem) {
+	if(elem.children.length == 0)
+		elem.textContent = Parser.escape(elem.textContent, ' ');
+	else for(var i = 0; i < elem.children.length; ++i)
+		Parser.escapeDOM(elem.children[i]);
+}
+
 
 Parser.toRPN = function(t) {
 	var out = "";
@@ -71,7 +92,7 @@ Parser.parse = function(s) {
 				val = stack.pop().concat([val]);
 			stack.pop();
 		} else if(!Parser.OOO[s[i]])
-			val = s[i];
+			val = [s[i]];
 		else switch(Parser.OOO[s[i]].assoc)
 		{
 		case Parser.ASSOC.UNARY:
@@ -110,7 +131,10 @@ Parser.init = function() {
 	for(var i = 0; i < Parser.OOO.length; ++i)
 		OOO[Parser.ESCAPE[Parser.OOO[i][0]]] = { "prec" : i, "assoc" : Parser.OOO[i][1] };
 	Parser.OOO = OOO;
+	Parser.init = undefined;
 }
+
+
 
 Parser.init();
 
