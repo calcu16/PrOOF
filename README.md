@@ -14,7 +14,7 @@ Design
 on quantifiers. Specifically I will use a pattern matching system for a rule
 set. However it seems likely that having free and bound variables vs. distinct
 and possibly non-distinct variables would be simpler from a logical standpoint,
-even if it requires more code. For convinience, the code will be broken up into
+even if it requires more code. For convenience, the code will be broken up into
 different types: operators, properties, variables, and formulas.
 
 Note: for the following section return etc. refers to the type of a variable.
@@ -32,9 +32,13 @@ Formulas are logical elements, in classical logic they are either true or
 false for a given universe (LEM). They can take arguments to signal unification.
 
 For instance we can create the following axioms for propositional calculus
+
          |- a -> (b -> a)
+
          |- (a -> (b -> c)) -> (a -> b) -> (a -> c)
+
          |- (!a -> !b) -> (b -> a)
+
  a, a->b |- b
 
  
