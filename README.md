@@ -33,13 +33,10 @@ false for a given universe (LEM). They can take arguments to signal unification.
 
 For instance we can create the following axioms for propositional calculus
 
-         |- a -> (b -> a)
-
-         |- (a -> (b -> c)) -> (a -> b) -> (a -> c)
-
-         |- (!a -> !b) -> (b -> a)
-
-  a, a->b |- b
+            |- a -> (b -> a)
+            |- (a -> (b -> c)) -> (a -> b) -> (a -> c)
+            |- (!a -> !b) -> (b -> a)
+    a, a->b |- b
 
  
 
