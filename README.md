@@ -39,7 +39,7 @@ For instance we can create the following axioms for propositional calculus
 
          |- (!a -> !b) -> (b -> a)
 
- a, a->b |- b
+  a, a->b |- b
 
  
 
